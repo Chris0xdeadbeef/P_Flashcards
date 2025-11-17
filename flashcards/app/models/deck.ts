@@ -5,6 +5,15 @@ export default class Deck extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare name: string
+
+  @column()
+  declare description: string | null
+
+  @column()
+  declare published: boolean
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
