@@ -32,3 +32,8 @@ td {
     padding: 1vw;
     border-bottom: #ddd solid 1px;
 }
+
+.login-container {
+        display: flex;
+    justify-content: flex-end;
+}
