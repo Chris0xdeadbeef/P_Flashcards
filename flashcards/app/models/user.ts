@@ -14,13 +14,22 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare id: number
 
   @column()
-  declare fullName: string | null
+  declare firstname: string | null
+
+  @column()
+  declare lastname: string | null
+
+  @column()
+  declare username: string | null
 
   @column()
   declare email: string
 
   @column({ serializeAs: null })
   declare password: string
+
+  @column()
+  declare isAdmin: boolean
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
