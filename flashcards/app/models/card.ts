@@ -5,6 +5,12 @@ export default class Card extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare question: string
+
+  @column()
+  declare reponse: string
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
