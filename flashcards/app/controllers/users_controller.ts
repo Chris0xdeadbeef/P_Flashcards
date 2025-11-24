@@ -1,10 +1,15 @@
+import Deck from '#models/deck'
+import User from '#models/user'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class UsersController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {}
+  async index({ view }: HttpContext) {
+    const users = await User.all()
+    return view.render('pages/users/index', { users })
+  }
 
   /**
    * Display form to create a new record
@@ -19,7 +24,17 @@ export default class UsersController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params, view }: HttpContext) {
+    // Récupère l'utilisateur
+    const user = await User.findOrFail(params.id)
+
+    // Récupère les decks de cet utilisateur
+    const decks = await Deck.query()
+      .where('user_id', user.id)
+      .orderBy('created_at', 'desc')
+    return view.render('pages/users/show', { user, decks })
+  }
+
 
   /**
    * Edit individual record
