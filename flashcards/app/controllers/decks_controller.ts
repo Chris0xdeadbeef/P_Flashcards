@@ -1,10 +1,15 @@
+import Deck from '#models/deck'
 import type { HttpContext } from '@adonisjs/core/http'
+
 
 export default class DecksController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {}
+  async index({ view }: HttpContext) {
+    const decks = await  Deck.query().where('published', true)
+    return view.render('pages/decks/show', { decks })
+  }
 
   /**
    * Display form to create a new record
@@ -19,7 +24,11 @@ export default class DecksController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params, view }: HttpContext) {
+    const deck = await Deck.findOrFail(params.id)
+
+    return view.render('pages/decks/show', { deck })
+  }
 
   /**
    * Edit individual record
