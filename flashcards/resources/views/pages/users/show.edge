@@ -1,0 +1,16 @@
+@component('components/layout')
+
+  <h1>
+    {{user.username}} - Vos decks
+  </h1>
+
+  <ol class="deck-list">
+    @each(deck in decks)
+      <li class="deck-item">
+        <h2>{{ deck.name }}</h2>
+        <p>{{ deck.description }}</p>
+      </li>
+    @endeach
+  </ol>
+
+@endcomponent
