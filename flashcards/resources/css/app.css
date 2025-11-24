@@ -1,39 +1,109 @@
+/* Body général */
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: auto;
-    width: 80%;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  width: 90%;
+  background-color: #38372c; /* fond sombre type WH40K */
+  color: #f0f0f0;
 }
 
-nav {
-    border: black solid 3px;
-    background-color: #e5e5e5;
-    text-align: center;
+/* Header */
+header {
+  text-align: center;
+  padding: 2rem 0;
+  border-bottom: 3px solid #ffd700;
+  background: linear-gradient(90deg, #1a1a1a 0%, #111 100%);
 }
 
-h1{
+header h1,
+h1 {
+  font-size: 2.5rem;
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px black;
+}
+
+h1 {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
+header p {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+/* Footer */
 footer {
-    border-top: black solid 1px;
-    text-align: center;
-    margin-top: 3vw;
+  border-top: 1px solid #444;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #aaa;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
+/* Deck list */
+.deck-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+
+  margin-top: 2rem;
 }
 
-th,
-td {
-    padding: 1vw;
-    border-bottom: #ddd solid 1px;
+/* Deck item */
+.deck-item {
+  background: linear-gradient(145deg, #1a1a1a, #111);
+  border: 2px solid #444;
+  color: #f0f0f0;
+  border-radius: 12px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.login-container {
-        display: flex;
-    justify-content: flex-end;
+.deck-item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(255, 255, 255, 0.7);
+  border-color: #ffd700;
+}
+
+/* Deck title */
+.deck-item h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #ffd700;
+  text-shadow: 1px 1px 2px black;
+}
+
+/* Deck description */
+.deck-item p {
+  font-size: 0.95rem;
+  margin: 10px 0 15px;
+  color: #ccc;
+}
+
+/* Deck link */
+.deck-item a {
+  color: #ff4500;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.deck-item a:hover {
+  color: #ffa500;
+  text-decoration: underline;
 }
