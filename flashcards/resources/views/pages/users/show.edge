@@ -1,16 +1,42 @@
 @component('components/layout')
 
-  <h1>
-    {{user.username}} - Vos decks
-  </h1>
+<h1>
+  {{ user.username }} - Vos decks
+</h1>
 
-  <ol class="deck-list">
-    @each(deck in decks)
-      <li class="deck-item">
-        <h2>{{ deck.name }}</h2>
-        <p>{{ deck.description }}</p>
-      </li>
-    @endeach
-  </ol>
+<ol class="deck-list" id="deckList">
+  @each(deck in decks)
+    <li class="deck-item" data-deck-id="{{ deck.id }}">
+      <h2>{{ deck.name }}</h2>
+      <p>{{ deck.description }}</p>
+
+      <!-- Zone d'action cachée par défaut -->
+      <div class="deck-actions">
+        <a href="/deck/{{ deck.id }}/edit" class="btn-action">Modifier</a>
+        <a href="/deck/{{ deck.id }}/delete" class="btn-action delete">Supprimer</a>
+        <a href="/deck/{{ deck.id }}/flashcards" class="btn-action">Voir flashcards</a>
+        <a href="/deck/{{ deck.id }}/flashcards/create" class="btn-action">Nouvelle carte</a>
+        <a href="/deck/{{ deck.id }}/play" class="btn-action play">Jouer</a>
+
+        <!-- Bouton Publier dynamique -->
+        <a href="/deck/{{ deck.id }}/publish" 
+           class="btn-action publish {{ deck.published ? 'published' : 'unpublished' }}">
+          {{ deck.published ? 'Publié' : 'Non publié' }}
+        </a>
+      </div>
+    </li>
+  @endeach
+</ol>
+
+<script>
+  document.querySelectorAll(".deck-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      document.querySelectorAll(".deck-item").forEach(i => {
+        if (i !== item) i.classList.remove("selected");
+      });
+      item.classList.toggle("selected");
+    });
+  });
+</script>
 
 @endcomponent
