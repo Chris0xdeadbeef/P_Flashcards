@@ -26,7 +26,12 @@ export default class UsersController {
    */
   async show({ params, view }: HttpContext) {
     // Récupère l'utilisateur
-    const user = await User.findOrFail(params.id)
+    // TODO : Lorsque l'authentification sera en place
+    // const user_id = auth.user.id
+    // En attendant c'est en dur
+    const user_id = 1
+
+    const user = await User.findOrFail(user_id)
 
     // Récupère les decks de cet utilisateur
     const decks = await Deck.query()
