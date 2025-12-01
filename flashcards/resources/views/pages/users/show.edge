@@ -16,7 +16,7 @@
 
         <!-- Zone d'action cachée par défaut -->
         <div class="deck-actions">
-          <a href="/deck/{{ deck.id }}/edit" class="btn-action">Modifier</a>          
+          <a href="/deck/{{ deck.id }}/edit" class="btn-action">Modifier</a>
 
           <form
             action="{{ route('deck.destroy', { deck_id: deck.id }) }}?_method=DELETE"
@@ -46,15 +46,7 @@
     @endeach
   </ol>
 
-  <script>
-    document.querySelectorAll(".deck-item").forEach(item => {
-      item.addEventListener("click", () => {
-        document.querySelectorAll(".deck-item").forEach(i => {
-          if (i !== item) i.classList.remove("selected");
-        });
-        item.classList.toggle("selected");
-      });
-    });
-  </script>
+  <script src="/resources/js/deck-actions.js">
 
+  </script>
 @endcomponent
