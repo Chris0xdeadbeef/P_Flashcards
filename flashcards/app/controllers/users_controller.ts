@@ -24,7 +24,7 @@ export default class UsersController {
   /**
    * Show individual record
    */
-  async show({ params, view }: HttpContext) {
+  async show({ params, view, auth }: HttpContext) {
     // Récupère l'utilisateur
     // TODO : Lorsque l'authentification sera en place
     // const user_id = auth.user.id
@@ -35,7 +35,7 @@ export default class UsersController {
 
     // Récupère les decks de cet utilisateur
     const decks = await Deck.query()
-      .where('user_id', user.id)
+      .where('user_id', user_id)
       .orderBy('created_at', 'desc')
     return view.render('pages/users/show', { user, decks })
   }
