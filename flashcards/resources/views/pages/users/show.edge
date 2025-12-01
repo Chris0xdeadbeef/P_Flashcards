@@ -16,8 +16,7 @@
 
         <!-- Zone d'action cachée par défaut -->
         <div class="deck-actions">
-          <a href="/deck/{{ deck.id }}/edit" class="btn-action">Modifier</a>
-          <a href="/deck/{{ deck.id }}/delete" class="btn-action delete">Supprimer</a>
+          <a href="/deck/{{ deck.id }}/edit" class="btn-action">Modifier</a>          
 
           <form
             action="{{ route('deck.destroy', { deck_id: deck.id }) }}?_method=DELETE"
