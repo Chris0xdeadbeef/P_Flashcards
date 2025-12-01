@@ -12,7 +12,7 @@ import UsersController from '#controllers/users_controller'
 import router from '@adonisjs/core/services/router'
 
 router.on('/').render('pages/home')
-router.get('/deck/:id/show', [DecksController, 'show']).as('deck.show')
+router.get('/decks/:deck_id/show', [DecksController, 'show']).as('deck.show')
 router.get('/decks', [DecksController, 'index']).as('decks.index')
 router.get('/users', [UsersController, 'index']).as('users.index')
 router.get('/user/show', [UsersController, 'show']).as('users.show')
