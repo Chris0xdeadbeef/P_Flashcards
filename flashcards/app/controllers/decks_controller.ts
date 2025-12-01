@@ -1,13 +1,12 @@
 import Deck from '#models/deck'
 import type { HttpContext } from '@adonisjs/core/http'
 
-
 export default class DecksController {
   /**
    * Display a list of resource
    */
   async index({ view }: HttpContext) {
-    const decks = await  Deck.query().where('published', true)
+    const decks = await Deck.query().where('published', true)
     return view.render('pages/decks/show', { decks })
   }
 
@@ -25,7 +24,7 @@ export default class DecksController {
    * Show individual record
    */
   async show({ params, view }: HttpContext) {
-    const deck = await Deck.findOrFail(params.id)
+    const deck = await Deck.findOrFail(params.deck_id)
 
     return view.render('pages/decks/show', { deck })
   }
