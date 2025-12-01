@@ -81,7 +81,7 @@ footer {
   box-shadow: 0 12px 24px rgba(255, 255, 255, 0.7);
   border-color: #ffd700;
 
-  cursor: pointer; /* curseur "main" */
+  cursor: pointer;
 }
 
 /* État sélectionné */
@@ -89,8 +89,6 @@ footer {
   transform: translateY(-8px) scale(1.05);
   border-color: #ffd700;
   box-shadow: 0 12px 24px rgba(255, 215, 0, 0.7);
-
-  cursor: pointer; /* garde le curseur clickable */
 }
 
 /* Actions cachées par défaut */
@@ -99,17 +97,20 @@ footer {
   margin-top: 15px;
   width: 100%;
   text-align: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* Boutons visibles quand deck sélectionné */
 .deck-item.selected .deck-actions {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
-/* Style des boutons */
-.btn-action {
+/* Style des boutons <a> et <button> */
+.btn-action,
+button.btn-action {
+  display: block; /* permet de prendre toute la largeur */
+  width: 100%;
   background-color: #222;
   color: #ffd700;
   padding: 8px 10px;
@@ -118,22 +119,31 @@ footer {
   text-decoration: none;
   transition: 0.2s;
   text-align: center;
+  cursor: pointer;
+  font: inherit; /* pour hériter de la police du parent */
+  box-sizing: border-box;
 }
 
-.btn-action:hover {
+/* Hover état */
+.btn-action:hover,
+button.btn-action:hover {
   background-color: #333;
   border-color: #ffd700;
 }
 
-.btn-action.delete {
+/* Variantes de couleur */
+.btn-action.delete,
+button.btn-action.delete {
   color: #ff4444;
 }
 
-.btn-action.play {
+.btn-action.play,
+button.btn-action.play {
   color: #4166F5;
 }
 
-.btn-action.publish {
+.btn-action.publish,
+button.btn-action.publish {
   color: #66ff66;
 }
 
@@ -152,33 +162,36 @@ footer {
   color: #ccc;
 }
 
-/* Deck link */
-.deck-item a {
-  color: #ff4500;
-  text-decoration: none;
+/* Deck link / boutons dans deck-item */
+.deck-item a,
+.deck-item button {
   font-weight: bold;
   transition: color 0.2s;
 }
 
-.deck-item a:hover {
+.deck-item a:hover,
+.deck-item button:hover {
   color: #ffa500;
   text-decoration: underline;
 }
 
 /* Publier : vert si publié */
-.btn-action.publish.published {
+.btn-action.publish.published,
+button.btn-action.publish.published {
   background-color: #28a745; /* vert */
   color: #fff;
   border: 1px solid #1f7a30;
 }
 
 /* Publier : rouge si non publié */
-.btn-action.publish.unpublished {
+.btn-action.publish.unpublished,
+button.btn-action.publish.unpublished {
   background-color: #dc3545; /* rouge */
   color: #fff;
   border: 1px solid #9b222b;
 }
 
-.btn-action.publish:hover {
+.btn-action.publish:hover,
+button.btn-action.publish:hover {
   opacity: 0.85;
 }
