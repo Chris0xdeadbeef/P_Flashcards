@@ -7,10 +7,27 @@
   <ol class="deck-list">
     @each(deck in decks)
       <li class="deck-item">
-        <h2>{{ deck.name }}</h2>
-        <p>{{ deck.description }}</p>
+        <h2>
+          {{ deck.name }}
+        </h2>
+        <p>
+          {{ deck.description }}
+        </p>
+
+        <!-- Zone d'action pour chaque deck -->
+        <div class="deck-actions">
+          <!-- Bouton Jouer -->
+          <form action="/deck/{{ deck.id }}/play" method="GET">
+            <button type="submit" class="btn-action play">
+              Jouer
+            </button>
+          </form>
+        </div>
       </li>
     @endeach
   </ol>
 
+  <script src="/resources/js/deck-actions.js">
+
+  </script>
 @endcomponent
