@@ -16,7 +16,17 @@
 
         <!-- Zone d'action cachée par défaut -->
         <div class="deck-actions">
-          <a href="/deck/{{ deck.id }}/edit" class="btn-action">Modifier</a>
+          <form
+            action="{{ route('deck.edit', { deck_id: deck.id }) }}?_method=EDIT"
+            method="GET"
+            style="display: inline"
+          >
+            {{ csrfField() }}
+
+            <button type="submit" class="btn-action">
+              Modifier
+            </button>
+          </form>
 
           <form
             action="{{ route('deck.destroy', { deck_id: deck.id }) }}?_method=DELETE"
