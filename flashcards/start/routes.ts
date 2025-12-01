@@ -15,7 +15,7 @@ router.on('/').render('pages/home')
 router.get('/deck/:id/show', [DecksController, 'show']).as('deck.show')
 router.get('/decks', [DecksController, 'index']).as('decks.index')
 router.get('/users', [UsersController, 'index']).as('users.index')
-router.get('/user/:id/show', [UsersController, 'show']).as('users.show')
+router.get('/user/show', [UsersController, 'show']).as('users.show')
 
 router.delete('/deck/:deck_id/delete', [DecksController, 'destroy']).as('deck.destroy')
 
