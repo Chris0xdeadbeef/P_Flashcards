@@ -17,3 +17,8 @@ router.get('/decks', [DecksController, 'index']).as('decks.index')
 router.get('/users', [UsersController, 'index']).as('users.index')
 router.get('/user/:id/show', [UsersController, 'show']).as('users.show')
 
+router.delete('/deck/:deck_id/delete', [DecksController, 'destroy']).as('deck.destroy')
+
+
+
+
