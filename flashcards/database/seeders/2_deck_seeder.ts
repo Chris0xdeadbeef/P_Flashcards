@@ -8,13 +8,13 @@ export default class DecksSeeder extends BaseSeeder {
         name: 'Space Marines – Codex Astartes',
         description: 'Lore général et organisation des Space Marines.',
         userId: 1,
-        published: true,
+        published: false,
       },
       {
         name: 'Chaos – Légions Renégates',
         description: 'Les dieux du Chaos, démons et traîtres.',
         userId: 2,
-        published: true,
+        published: false,
       },
       {
         name: 'Xenos – Tyranides',
