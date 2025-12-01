@@ -51,7 +51,6 @@ footer {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-
   margin-top: 2rem;
 }
 
@@ -72,12 +71,70 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  cursor: pointer; /* clickable même sans hover */
 }
 
+/* Hover état */
 .deck-item:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 12px 24px rgba(255, 255, 255, 0.7);
   border-color: #ffd700;
+
+  cursor: pointer; /* curseur "main" */
+}
+
+/* État sélectionné */
+.deck-item.selected {
+  transform: translateY(-8px) scale(1.05);
+  border-color: #ffd700;
+  box-shadow: 0 12px 24px rgba(255, 215, 0, 0.7);
+
+  cursor: pointer; /* garde le curseur clickable */
+}
+
+/* Actions cachées par défaut */
+.deck-actions {
+  display: none;
+  margin-top: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Boutons visibles quand deck sélectionné */
+.deck-item.selected .deck-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Style des boutons */
+.btn-action {
+  background-color: #222;
+  color: #ffd700;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  text-decoration: none;
+  transition: 0.2s;
+  text-align: center;
+}
+
+.btn-action:hover {
+  background-color: #333;
+  border-color: #ffd700;
+}
+
+.btn-action.delete {
+  color: #ff4444;
+}
+
+.btn-action.play {
+  color: #4166F5;
+}
+
+.btn-action.publish {
+  color: #66ff66;
 }
 
 /* Deck title */
@@ -106,4 +163,22 @@ footer {
 .deck-item a:hover {
   color: #ffa500;
   text-decoration: underline;
+}
+
+/* Publier : vert si publié */
+.btn-action.publish.published {
+  background-color: #28a745; /* vert */
+  color: #fff;
+  border: 1px solid #1f7a30;
+}
+
+/* Publier : rouge si non publié */
+.btn-action.publish.unpublished {
+  background-color: #dc3545; /* rouge */
+  color: #fff;
+  border: 1px solid #9b222b;
+}
+
+.btn-action.publish:hover {
+  opacity: 0.85;
 }
