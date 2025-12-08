@@ -7,6 +7,11 @@
   <ol class="deck-list">
     @each(card in cards)
       <li class="deck-item">
+        <!-- Point de statut du deck parent -->
+        @if(card.deck)
+          <span class="deck-status {{ card.deck.published ? 'published' : 'unpublished' }}"></span>
+        @endif
+
         <h2>
           {{ card.question }}
         </h2>
@@ -17,5 +22,4 @@
     @endeach
   </ol>
 
-  </script>
 @endcomponent

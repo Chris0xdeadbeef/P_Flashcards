@@ -5,6 +5,8 @@
   </h1>
 
   <ol class="deck-list">
+    <span class="deck-status {{ deck.published ? 'published' : 'unpublished' }}"></span>
+
     @each(deck in decks)
       <li class="deck-item">
         <h2>

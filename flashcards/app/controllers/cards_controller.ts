@@ -7,8 +7,20 @@ export default class CardsController {
    * Display a list of resource
    */
   async index({ params, view }: HttpContext) {
-    const cards = await Card.query()
-    return view.render('pages/cards/show', { cards })
+    const cards = await Card.query().preload('deck')
+
+    // number = id et, valeur du deck
+    const decksMap: Record<number, Deck> = {}
+    cards.forEach((card) => {
+      if (card.deck) {
+        decksMap[card.deck.id] = card.deck
+      }
+    })
+
+    //prend toutes les valeurs de l’objet decksMap et les met dans un tableau.
+    const decks = Object.values(decksMap)
+
+    return view.render('pages/cards/show', { cards, decks })
   }
 
   /**
@@ -25,7 +37,7 @@ export default class CardsController {
    * Show individual record
    */
   async show({ params, view }: HttpContext) {
-    const cards = await Card.query().where('deck_id',  params.deck_id)
+    const cards = await Card.query().where('deck_id', params.deck_id)
     const deck = await Deck.findOrFail(params.deck_id)
     return view.render('pages/cards/show', { deck, cards })
   }
