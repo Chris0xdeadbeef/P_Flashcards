@@ -1,10 +1,15 @@
+import Card from '#models/card'
+import Deck from '#models/deck'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class CardsController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {}
+  async index({ params, view }: HttpContext) {
+    const cards = await Card.query()
+    return view.render('pages/cards/show', { cards })
+  }
 
   /**
    * Display form to create a new record
@@ -19,7 +24,11 @@ export default class CardsController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params, view }: HttpContext) {
+    const cards = await Card.query().where('deck_id',  params.deck_id)
+    const deck = await Deck.findOrFail(params.deck_id)
+    return view.render('pages/cards/show', { deck, cards })
+  }
 
   /**
    * Edit individual record
