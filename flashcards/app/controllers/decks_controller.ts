@@ -1,5 +1,7 @@
 import Deck from '#models/deck'
+import { deckValidator } from '#validators/deck'
 import type { HttpContext } from '@adonisjs/core/http'
+import { dd } from '@adonisjs/core/services/dumper'
 
 export default class DecksController {
   /**
@@ -41,6 +43,16 @@ export default class DecksController {
    * Handle form submission for the edit action
    */
   async update({ params, request }: HttpContext) {}
+  async togglePublish({ params, response }: HttpContext) {
+    const deck = await Deck.findOrFail(params.deck_id)
+
+    // Inverse l'état publié
+    deck.published = !deck.published
+    await deck.save()
+
+    // Retour à la page précédente
+    return response.redirect().back()
+  }
 
   /**
    * Delete record
