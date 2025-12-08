@@ -42,7 +42,20 @@ export default class DecksController {
   /**
    * Handle form submission for the edit action
    */
-  async update({ params, request }: HttpContext) {}
+  async update({ params, request, response }: HttpContext) {
+    const deckId = params.deck_id
+
+    // Valider les données
+    const validatedData = await request.validateUsing(deckValidator)
+
+    // Recherche du deck dans la DB
+    const deck = await Deck.findOrFail(deckId)
+
+    deck.merge(validatedData)
+    await deck.save()
+    return response.redirect().toRoute('users.show', { deck_id: deck.id })
+  }
+
   async togglePublish({ params, response }: HttpContext) {
     const deck = await Deck.findOrFail(params.deck_id)
 
