@@ -17,6 +17,8 @@ router.get('/decks/:deck_id/show', [DecksController, 'show']).as('deck.show')
 router.get('/decks', [DecksController, 'index']).as('decks.index')
 router.get('/deck/:deck_id/edit', [DecksController, 'edit']).as('deck.edit')
 
+router.put('/deck/:deck_id/publish', [DecksController, 'togglePublish']).as('deck.publish')
+
 router.put('/deck/:deck_id', [DecksController, 'update']).as('deck.update')
 router.delete('/deck/:deck_id/delete', [DecksController, 'destroy']).as('deck.destroy')
 
