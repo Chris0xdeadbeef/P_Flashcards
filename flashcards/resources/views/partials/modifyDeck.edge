@@ -4,8 +4,8 @@
 
   <div class="deck-edit-container" style="max-width: 500px; margin: 2rem auto;">
     <form
-      action="{{ route('decks.update', { deck_id: deck.id }) }}"
-      method="POST"
+      action="{{ route('deck.update', { deck_id: deck.id }) }}"
+      method="PUT"
     >
       {{ csrfField() }}
       <input type="hidden" name="_method" value="PUT">
