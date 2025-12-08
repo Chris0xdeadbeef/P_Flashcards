@@ -7,6 +7,7 @@
   <ol class="deck-list" id="deckList">
     @each(deck in decks)
       <li class="deck-item" data-deck-id="{{ deck.id }}">
+        <span class="deck-status {{ deck.published ? 'published' : 'unpublished' }}"></span>
         <h2>
           {{ deck.name }}
         </h2>
@@ -45,12 +46,18 @@
           <a href="/deck/{{ deck.id }}/play" class="btn-action play">Jouer</a>
 
           <!-- Bouton Publier dynamique -->
-          <a
-            href="/deck/{{ deck.id }}/publish"
-            class="btn-action publish {{ deck.published ? 'published' : 'unpublished' }}"
+          <form
+            action="{{ route('deck.publish', { deck_id: deck.id }) }}?_method=PUT"
+            method="POST"
+            style="display: inline"
           >
-            {{ deck.published ? 'Publié' : 'Non publié' }}
-        </a>
+              {{ csrfField() }}
+
+            <button type="submit" class="btn-action publish {{ deck.published ? 'published' : 'unpublished' }}">
+                {{ deck.published ? 'Publié' : 'Non publié' }}
+            </button>
+          </form>
+
         </div>
       </li>
     @endeach
