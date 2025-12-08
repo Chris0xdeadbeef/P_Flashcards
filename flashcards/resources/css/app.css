@@ -71,7 +71,7 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
+  position: relative;
   cursor: pointer; /* clickable même sans hover */
 }
 
@@ -194,4 +194,48 @@ button.btn-action.publish.unpublished {
 .btn-action.publish:hover,
 button.btn-action.publish:hover {
   opacity: 0.85;
+}
+
+.deck-status {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+}
+
+.deck-status.published {
+  background-color: #28a745; /* vert */
+  border-color: #1f7a30;
+  box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
+}
+
+.deck-status.unpublished {
+  background-color: #dc3545; /* rouge */
+  border-color: #9b222b;
+  box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.5);
+}
+
+.deck-item.selected .deck-status {
+  display: none;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.3);
+  }
+  50% {
+    transform: scale(1.3);
+    box-shadow: 0 0 8px 4px rgba(0,0,0,0.2);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+  }
 }
