@@ -1,0 +1,21 @@
+@component('components/layout')
+
+  <h1>
+    Cards
+  </h1>
+
+  <ol class="deck-list">
+    @each(card in cards)
+      <li class="deck-item">
+        <h2>
+          {{ card.question }}
+        </h2>
+        <p>
+          {{ card.reponse }}
+        </p>       
+      </li>
+    @endeach
+  </ol>
+
+  </script>
+@endcomponent
