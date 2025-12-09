@@ -17,10 +17,22 @@ header {
 
 header h1,
 h1 {
-  font-size: 2.5rem;
-  color: #ffd700;
-  margin-bottom: 0.5rem;
-  text-shadow: 1px 1px 3px black;
+    font-family: "Cinzel", serif;
+    font-size: 38px;
+    text-align: center;
+    margin: 25px 0 40px;
+    color: #d4af37; /* Or impérial */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    /* Effet métallisé / glow 40k */
+    text-shadow:
+        0 0 6px rgba(212, 175, 55, 0.4),
+        0 0 14px rgba(212, 175, 55, 0.2),
+        0 2px 2px #000;
+
+    border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+    padding-bottom: 12px;
 }
 
 h1 {
@@ -151,9 +163,17 @@ button.btn-action.publish {
 .deck-item h2 {
   margin-top: 0;
   font-size: 1.3rem;
-  color: #ffd700;
   text-shadow: 1px 1px 2px black;
+  font-family: "Cinzel", serif;
+    text-align: center;
+    margin: 0px 0 40px;
+    color: #d4af37;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+    padding-bottom: 5px;
 }
+
 
 /* Deck description */
 .deck-item p {
@@ -239,3 +259,4 @@ button.btn-action.publish:hover {
     box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
   }
 }
+

@@ -41,7 +41,18 @@
             </button>
           </form>
 
-          <a href="/deck/{{ deck.id }}/flashcards" class="btn-action">Voir flashcards</a>
+          <form
+            action="{{ route('deck.showCards', { deck_id: deck.id }) }}?_method=GET"
+            method="GET"
+            style="display: inline"
+          >
+            {{ csrfField() }}
+
+            <button type="submit" class="btn-action">
+              Voir flashcards
+            </button>
+          </form>
+          
           <a href="/deck/{{ deck.id }}/flashcards/create" class="btn-action">Nouvelle carte</a>
           <a href="/deck/{{ deck.id }}/play" class="btn-action play">Jouer</a>
 

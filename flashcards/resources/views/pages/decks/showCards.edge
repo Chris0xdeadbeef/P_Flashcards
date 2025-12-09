@@ -1,0 +1,25 @@
+@component('components/layout')
+
+  <h1>
+    Cartes du deck {{ deck.name }}
+  </h1>
+
+  <ol class="deck-list">
+    @each(card in cards)
+      <li class="deck-item">
+        <span class="deck-status {{ deck.published ? 'published' : 'unpublished' }}"></span>
+        @if(card.deck)
+          <span class="deck-status {{ card.deck.published ? 'published' : 'unpublished' }}"></span>
+        @endif
+        
+        <h2>
+          {{ card.question }}
+        </h2>
+        <p>
+          {{ card.reponse }}
+        </p>
+      </li>
+    @endeach
+  </ol>
+
+@endcomponent

@@ -1,3 +1,4 @@
+import Card from '#models/card'
 import Deck from '#models/deck'
 import { deckValidator } from '#validators/deck'
 import type { HttpContext } from '@adonisjs/core/http'
@@ -36,7 +37,7 @@ export default class DecksController {
    */
   async edit({ params, view }: HttpContext) {
     const deck = await Deck.findOrFail(params.deck_id)
-    return view.render('partials/modifyDeck', { deck })
+    return view.render('pages/decks/modifyDeck', { deck })
   }
 
   /**
@@ -54,6 +55,12 @@ export default class DecksController {
     deck.merge(validatedData)
     await deck.save()
     return response.redirect().toRoute('users.show', { deck_id: deck.id })
+  }
+
+  async showCards({ params, view }: HttpContext) {
+    const cards = await Card.query().where('deck_id', params.deck_id)
+    const deck = await Deck.findOrFail(params.deck_id)
+    return view.render('pages/decks/showCards', { deck, cards })
   }
 
   async togglePublish({ params, response }: HttpContext) {

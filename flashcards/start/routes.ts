@@ -17,6 +17,7 @@ router.on('/').render('pages/home')
 router.get('/decks/:deck_id/show', [DecksController, 'show']).as('deck.show')
 router.get('/decks', [DecksController, 'index']).as('decks.index')
 router.get('/deck/:deck_id/edit', [DecksController, 'edit']).as('deck.edit')
+router.get('/deck/:deck_id/cards', [DecksController, 'showCards']).as('deck.showCards')
 
 router.put('/deck/:deck_id/publish', [DecksController, 'togglePublish']).as('deck.publish')
 

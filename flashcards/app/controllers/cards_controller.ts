@@ -8,19 +8,7 @@ export default class CardsController {
    */
   async index({ params, view }: HttpContext) {
     const cards = await Card.query().preload('deck')
-
-    // number = id et, valeur du deck
-    const decksMap: Record<number, Deck> = {}
-    cards.forEach((card) => {
-      if (card.deck) {
-        decksMap[card.deck.id] = card.deck
-      }
-    })
-
-    //prend toutes les valeurs de l’objet decksMap et les met dans un tableau.
-    const decks = Object.values(decksMap)
-
-    return view.render('pages/cards/show', { cards, decks })
+    return view.render('pages/cards/index', { cards })
   }
 
   /**
