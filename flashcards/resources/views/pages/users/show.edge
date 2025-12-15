@@ -4,6 +4,19 @@
     {{ user.username }} - Vos decks
   </h1>
 
+  <div style="margin-bottom: 1.5rem; text-align:center;">
+    <form
+      action="{{ route('deck.create') }}?_method=GET"
+      method="GET"
+      style="display:inline-block; width:250px;"
+    >
+      {{ csrfField() }}
+    <button type="submit" class="btn-action play">
+        + Ajouter un deck
+    </button>
+    </form>
+  </div>
+
   <ol class="deck-list" id="deckList">
     @each(deck in decks)
       <li class="deck-item" data-deck-id="{{ deck.id }}">
@@ -52,8 +65,19 @@
               Voir flashcards
             </button>
           </form>
-          
-          <a href="/deck/{{ deck.id }}/flashcards/create" class="btn-action">Nouvelle carte</a>
+
+          <form
+            action="{{ route('card.create', { deck_id: deck.id }) }}?_method=GET"
+            method="GET"
+            style="display: inline"
+          >
+            {{ csrfField() }}
+
+            <button type="submit" class="btn-action">
+              Nouvelle carte
+            </button>
+          </form>
+
           <a href="/deck/{{ deck.id }}/play" class="btn-action play">Jouer</a>
 
           <!-- Bouton Publier dynamique -->
@@ -62,10 +86,10 @@
             method="POST"
             style="display: inline"
           >
-              {{ csrfField() }}
+            {{ csrfField() }}
 
             <button type="submit" class="btn-action publish {{ deck.published ? 'published' : 'unpublished' }}">
-                {{ deck.published ? 'Publié' : 'Non publié' }}
+              {{ deck.published ? 'Publié' : 'Non publié' }}
             </button>
           </form>
 
