@@ -1,0 +1,44 @@
+@component('components/layout')
+
+  <h1>Créer un nouveau deck</h1>
+
+  <div class="deck-edit-container" style="max-width: 500px; margin: 2rem auto;">
+    <form
+      action="{{ route('deck.store') }}?_method=POST"
+      method="POST"
+    >
+      {{ csrfField() }}
+
+      <!-- Nom du deck -->
+      <div style="margin-bottom: 1rem;">
+        <label for="name" style="display:block; margin-bottom:0.5rem; color:#ffd700;">Nom du deck</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value=""
+          style="width:100%; padding:8px; border-radius:6px; border:1px solid #444; background:#222; color:#f0f0f0; box-sizing:border-box;"
+          required
+        >
+      </div>
+
+      <!-- Description -->
+      <div style="margin-bottom: 1rem;">
+        <label for="description" style="display:block; margin-bottom:0.5rem; color:#ffd700;">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="5"
+          style="width:100%; padding:8px; border-radius:6px; border:1px solid #444; background:#222; color:#f0f0f0; box-sizing:border-box;"
+        ></textarea>
+      </div>
+
+      <!-- Bouton Créer -->
+      <button type="submit" class="btn-action play">
+        Créer
+      </button>
+
+    </form>
+  </div>
+
+@endcomponent
