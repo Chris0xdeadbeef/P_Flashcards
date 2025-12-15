@@ -1,0 +1,44 @@
+@component('components/layout')
+
+  <h1>Créer une nouvelle carte</h1>
+
+  <div class="deck-edit-container" style="max-width: 500px; margin: 2rem auto;">
+    <form
+      action="{{ route('card.store', { deck_id: deck.id }) }}?_method=POST"
+      method="POST"
+    >
+      {{ csrfField() }}
+
+      <!-- Question -->
+      <div style="margin-bottom: 1rem;">
+        <label for="question" style="display:block; margin-bottom:0.5rem; color:#d4af37;">Question</label>
+        <input
+          type="text"
+          id="question"
+          name="question"
+          value=""
+          style="width:100%; padding:8px; border-radius:6px; border:1px solid #444; background:#222; color:#f0f0f0; box-sizing:border-box;"
+          required
+        >
+      </div>
+
+      <!-- Réponse -->
+      <div style="margin-bottom: 1rem;">
+        <label for="reponse" style="display:block; margin-bottom:0.5rem; color:#d4af37;">Réponse</label>
+        <textarea
+          id="reponse"
+          name="reponse"
+          rows="5"
+          style="width:100%; padding:8px; border-radius:6px; border:1px solid #444; background:#222; color:#f0f0f0; box-sizing:border-box;"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Bouton Créer -->
+      <button type="submit" class="btn-action play">
+        Créer la carte
+      </button>
+    </form>
+  </div>
+
+@endcomponent
