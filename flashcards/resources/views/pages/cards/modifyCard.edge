@@ -1,36 +1,37 @@
 @component('components/layout')
 
-  <h1>Modifier la carte</h1>
+  <h1>Modifier la carte – {{ deck.name }}</h1>
 
   <div class="deck-edit-container" style="max-width: 500px; margin: 2rem auto;">
     <form
-      action="{{ route('card.update', { deck_id: deck.id }) }}?_method=PUT"
+      action="{{ route('card.update', { deck_id: deck.id, card_id: card.id }) }}?_method=PUT"
       method="POST"
     >
       {{ csrfField() }}
 
-      <!-- Nom du deck -->
+      <!-- Question -->
       <div style="margin-bottom: 1rem;">
-        <label for="name" style="display:block; margin-bottom:0.5rem; color:#ffd700;">Nom du deck</label>
+        <label for="question" style="display:block; margin-bottom:0.5rem; color:#ffd700;">Question</label>
         <input
           type="text"
-          id="name"
-          name="name"
-          value="{{ deck.name }}"
+          id="question"
+          name="question"
+          value="{{ card.question }}"
           style="width:100%; padding:8px; border-radius:6px; border:1px solid #444; background:#222; color:#f0f0f0; box-sizing:border-box;"
           required
         >
       </div>
 
-      <!-- Description -->
+      <!-- Réponse -->
       <div style="margin-bottom: 1rem;">
-        <label for="description" style="display:block; margin-bottom:0.5rem; color:#ffd700;">Description</label>
+        <label for="reponse" style="display:block; margin-bottom:0.5rem; color:#ffd700;">Réponse</label>
         <textarea
-          id="description"
-          name="description"
+          id="reponse"
+          name="reponse"
           rows="5"
           style="width:100%; padding:8px; border-radius:6px; border:1px solid #444; background:#222; color:#f0f0f0; box-sizing:border-box;"
-        >{{ deck.description }}</textarea>
+          required
+        >{{ card.reponse }}</textarea>
       </div>
 
       <!-- Bouton Enregistrer -->
