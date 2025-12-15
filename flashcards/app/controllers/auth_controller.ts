@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import { loginUserValidator } from '#validators/auth'
 import User from '#models/user'
+import { dd } from '@adonisjs/core/services/dumper'
 
 /**
  * Controller pour l'authentification
@@ -12,6 +13,8 @@ export default class AuthController {
    */
 
   async handleLogin({ request, auth, session, response }: HttpContext) {
+
+    
     // Récupère les données validées
     const { username, password } = await request.validateUsing(loginUserValidator)
 
@@ -25,7 +28,7 @@ export default class AuthController {
     session.flash('success', "L'utilisateur s'est connecté avec succès")
 
     // Redirige vers la route ayant pour nom 'home'
-    return response.redirect().toRoute('deck.show')
+    return response.redirect().toRoute('users.show')
   }
 
   /**
