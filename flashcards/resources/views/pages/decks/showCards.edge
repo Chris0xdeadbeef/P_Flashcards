@@ -18,8 +18,37 @@
         <p>
           {{ card.reponse }}
         </p>
-      </li>
-    @endeach
-  </ol>
 
-@endcomponent
+        <div class="deck-actions">
+
+          <!-- Modifier -->
+          <form
+            action="{{ route('card.edit', { deck_id: deck.id, card_id: card.id }) }}"
+            method="GET"
+            style="display: inline"
+          >
+            {{ csrfField() }}
+    <button type="submit" class="btn-action">
+              Modifier
+    </button>
+          </form>
+
+          <!-- Supprimer -->
+          <form
+            action="{{ route('card.destroy', { deck_id: deck.id, card_id: card.id }) }}?_method=DELETE"
+            method="POST"
+            style="display: inline"
+          >
+            {{ csrfField() }}
+    <button type="submit" class="btn-action delete">
+              Supprimer
+    </button>
+          </form>
+
+        </li>
+      @endeach
+    </ol>
+    <script src="/resources/js/deck-actions.js">
+
+    </script>
+  @endcomponent
